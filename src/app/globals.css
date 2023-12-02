@@ -20,6 +20,7 @@ body {
 
 #TextA{
   background-color: var(--NegroIto);
+  font-size: large;
 }
 
 #textArea-prompt{
