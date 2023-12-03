@@ -7,7 +7,7 @@ import db from "./api/db";
 
 export default function Home() {
     const roleUser = "user";
-    const roleSys = "system";
+    const roleSys = "assistant";
 
     const [input, setInput] = useState("");
 
@@ -25,7 +25,7 @@ export default function Home() {
         },
         {
             role: roleSys,
-            content: `¡Hola, soy ItoComp! Estoy aquí para ayudarte. `,
+            content: `¡Hola, soy ItoComp! Estoy aquí para ayudarte.`,
         },
     ]);
 
@@ -41,17 +41,23 @@ export default function Home() {
         sendMessageToApi(newMessages);
     };
 
+    const handleTextareaKeyDown = (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault(); // Evitar que se agregue una nueva línea
+          handleSubmit(e);
+      }
+  };
+
     const buildMessage = (message) => {};
 
     const sendMessageToApi = async (messages) => {
-        console.log("Enviando solicutd..");
+
         const response = await fetch("/api/chat", {
             method: "POST",
             body: JSON.stringify({ messages }),
         });
 
         const data = await response.json();
-        console.log(data.choices[0].message.content);
 
         setMessages((prevData) => [...prevData, data.choices[0].message]);
 
@@ -123,6 +129,7 @@ export default function Home() {
                 <textarea
                     value={input}
                     onChange={changeInput}
+                    onKeyDown={handleTextareaKeyDown}
                     placeholder="Escribe aqui..."
                     id="textArea-prompt"
                     class="bg-transparent w-[95%] focus:outline-none"
