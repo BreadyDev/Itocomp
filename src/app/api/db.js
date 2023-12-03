@@ -39,6 +39,13 @@ const db = {
         { classroom_id: "C", capacity: 50 },
         ,
     ],
+    subjects: [
+        { subject_id: 1, name: "Mathematics" },
+        { subject_id: 2, name: "Physics" },
+        { subject_id: 3, name: "Biology" },
+        { subject_id: 4, name: "History" },
+        { subject_id: 5, name: "Computer Science" },
+    ],
     reservations: [
         {
             start_time: "2023-12-04T09:00:00Z",
@@ -48,8 +55,8 @@ const db = {
             professor_id: 1,
         },
         {
-            start_time: "2023-12-05T09:00:00Z",
-            end_time: "2023-12-05T10:00:00Z",
+            start_time: "2023-12-05T10:00:00Z",
+            end_time: "2023-12-05T11:00:00Z",
             classroom_id: "A",
             subject_id: 1,
             professor_id: 1,
@@ -68,13 +75,13 @@ const db = {
             subject_id: 3,
             professor_id: 3,
         },
-    ],
-    subjects: [
-        { subject_id: 1, name: "Mathematics" },
-        { subject_id: 2, name: "Physics" },
-        { subject_id: 3, name: "Biology" },
-        { subject_id: 4, name: "History" },
-        { subject_id: 5, name: "Computer Science" },
+        {
+            start_time: "2023-12-05T09:00:00Z",
+            end_time: "2023-12-05T12:00:00Z",
+            classroom_id: "C",
+            subject_id: 3,
+            professor_id: 1,
+        },
     ],
 };
 
